@@ -1,0 +1,44 @@
+int pinoLed1 = 10;
+int pinoLed2 = 8;
+int pinoBotao = 7;
+int cliqueBotao = 0;
+
+void setup() {
+  pinMode(pinoLed1, OUTPUT);
+  pinMode(pinoLed2, OUTPUT);
+  pinMode(pinoBotao, INPUT);
+}
+
+void loop() {
+
+  if (digitalRead(pinoBotao) == HIGH) {
+    cliqueBotao++;
+
+    if (cliqueBotao > 3) {
+      cliqueBotao = 1;
+    }
+
+    delay(200);
+
+    while (digitalRead(pinoBotao) == HIGH) {
+    }
+
+    delay(50);
+  }
+
+  if (cliqueBotao == 1) {
+    digitalWrite(pinoLed1, HIGH);
+    digitalWrite(pinoLed2, LOW);
+  }
+
+  if (cliqueBotao == 2) {
+    digitalWrite(pinoLed2, HIGH);
+    digitalWrite(pinoLed1, LOW);
+  }
+
+  if (cliqueBotao == 3) {
+    digitalWrite(pinoLed1, LOW);
+    digitalWrite(pinoLed2, LOW);
+  }
+}
+     
